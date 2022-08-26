@@ -1,4 +1,4 @@
-import CategoryIndex from "../../category-index/category-index.component";
+import CategoryIndex from "../../components/category-index/category-index.component";
 
 const Home = () => {
   const categories = [
