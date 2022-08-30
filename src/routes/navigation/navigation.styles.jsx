@@ -7,6 +7,10 @@ export const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  background-color: white;
 `;
 
 export const LogoContainer = styled(Link)`
@@ -20,11 +24,11 @@ export const NavLinks = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end
+  justify-content: flex-end;
+  font-weight: bold;
 `;
 
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
 `;
-
