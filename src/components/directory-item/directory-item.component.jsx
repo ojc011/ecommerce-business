@@ -1,21 +1,18 @@
 import { Link } from 'react-router-dom';
-import './category-item.styles.scss';
+import './directory-item.styles.scss';
 
-const CategoryItem = ({ category }) => {
+const DirectoryItem = ({ category }) => {
   const { imageUrl, title } = category;
 
   return (
-    <div className="category-container">
+    <div className="directory-item-container">
       <div
         className="background-image"
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
       />
-      <Link
-        to={`/shop/${title.toLowerCase()}`}
-        className="category-body-container"
-      >
+      <Link to={`/shop/${title.toLowerCase()}`} className="body">
         <div>
           <h2>{title}</h2>
           <p>Shop Now</p>
@@ -25,4 +22,4 @@ const CategoryItem = ({ category }) => {
   );
 };
 
-export default CategoryItem;
+export default DirectoryItem;
