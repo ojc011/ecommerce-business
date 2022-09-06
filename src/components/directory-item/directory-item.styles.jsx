@@ -17,19 +17,21 @@ export const BodyLink = styled(Link)`
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  background-color: white;
+  background-color: black;
   opacity: 0.7;
   position: absolute;
+  border-radius: 10px;
   h2 {
     font-weight: bold;
     margin: 0 6px 0;
     font-size: 22px;
-    color: #4a4a4a;
+    color: white;
     text-transform: uppercase;
   }
   p {
     font-weight: lighter;
     font-size: 16px;
+    color: white;
   }
 `;
 
