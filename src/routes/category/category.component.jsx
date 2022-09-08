@@ -7,7 +7,7 @@ import { CategoryContainer, CategoryTitle } from './category.styles';
 
 const Category = () => {
   const { category } = useParams();
-  const categoriesMap = useSelector(selectCategoriesMap);
+  const categoriesMap = useSelector(selectCategoriesMap); // Use selector runs everytime the state object is updated in the root reducer.
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
@@ -19,8 +19,8 @@ const Category = () => {
       <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
       <CategoryContainer>
         {products &&
-          products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        products.map((product) => (
+          <ProductCard key={product.id} product={product} />
           ))}
       </CategoryContainer>
     </Fragment>
