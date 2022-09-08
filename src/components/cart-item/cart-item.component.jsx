@@ -1,15 +1,28 @@
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/cart.context';
-import { Arrow, CartItemContainer, ItemDetails, Quantity, RemoveButton } from './cart-item.styles.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addItemToCart,
+  clearItemFromCart,
+  removeItemFromCart,
+} from '../../store/cart/cart.action.js';
+import { selectCartItems } from '../../store/cart/cart.selector.js';
+import {
+  Arrow,
+  CartItemContainer,
+  ItemDetails,
+  Quantity,
+  RemoveButton,
+} from './cart-item.styles.jsx';
 
 const CartItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
-  const { clearItemFromCart, removeItemFromCart, addItemToCart } =
-    useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
 
-  const clearItemHandler = () => clearItemFromCart(cartItem);
-  const addItemHandler = () => addItemToCart(cartItem);
-  const removeItemHandler = () => removeItemFromCart(cartItem);
+  const clearItemHandler = () =>
+    dispatch(clearItemFromCart(cartItems, cartItem));
+  const addItemHandler = () => dispatch(addItemToCart(cartItems, cartItem));
+  const removeItemHandler = () =>
+    dispatch(removeItemFromCart(cartItems, cartItem));
 
   return (
     <CartItemContainer>
@@ -19,15 +32,9 @@ const CartItem = ({ cartItem }) => {
         <span className="price">
           {quantity} x $ {price}
           <Quantity>
-            <Arrow onClick={removeItemHandler}>
-              &#10094;
-            </Arrow>
-            <RemoveButton onClick={clearItemHandler}>
-              &#10005;
-            </RemoveButton>
-            <Arrow onClick={addItemHandler}>
-              &#10095;
-            </Arrow>
+            <Arrow onClick={removeItemHandler}>&#10094;</Arrow>
+            <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
+            <Arrow onClick={addItemHandler}>&#10095;</Arrow>
           </Quantity>
         </span>
       </ItemDetails>
